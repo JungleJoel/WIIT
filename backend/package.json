@@ -11,7 +11,9 @@
   "license": "GPL-3.0-only",
   "type": "commonjs",
   "dependencies": {
+    "dotenv": "^18.0.5",
     "express": "^5.2.1",
+    "knex": "^3.3.0",
     "mssql": "^12.7.2"
   }
 }
