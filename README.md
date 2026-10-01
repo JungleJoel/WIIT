@@ -6,7 +6,7 @@
 ### Node.js (LTS version)
 - Download the **LTS** version from https://nodejs.org (npm is included)
 - to check type in bash:
-  node -v
+  node -v and
   npm -v
 
 ### Docker Desktop
@@ -16,13 +16,13 @@
   "Use Rosetta for x86_64/amd64 emulation". The SQL Server image needs this.
 - **Linux (Debian/Ubuntu):** Follow https://docs.docker.com/engine/install/
 - Start Docker Desktop, then bash:
-  docker --version
+  docker --version and
   docker compose version
 
 ## 2. Install backend dependencies
 
  in bash:
-cd "backend" 
+cd backend and then
 npm install
 
 
