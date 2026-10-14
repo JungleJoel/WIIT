@@ -7,17 +7,23 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
   "license": "GPL-3.0-only",
   "type": "commonjs",
   "dependencies": {
     "dotenv": "^18.0.5",
     "express": "^5.2.1",
+    "fast-xml-parser": "^5.11.2",
     "knex": "^3.3.0",
     "mssql": "^12.7.2",
     "tedious": "^20.3.3"
   },
   "devDependencies": {
     "better-sqlite3": "^13.0.3"
+  },
+  "allowScripts": {
+    "better-sqlite3@13.0.3": true
+  },
+  "directories": {
+    "test": "test"
   }
 }
