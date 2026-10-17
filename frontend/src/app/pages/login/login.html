@@ -1,0 +1,69 @@
+<main class="login-page">
+    <section class="login-container">
+
+        <img
+            class="mau-logo"
+            src="images/mau-logo.svg"
+            alt="Malmö Universitets logotyp"
+        />
+
+        <form
+            #loginForm="ngForm" 
+            (ngSubmit)="onSubmit()"
+            novalidate
+        >
+
+            <!-- Email Field. Autocomplete="username" because password handler has to pair it correctly to the password-field-->
+            <div class="form-content">
+                <label for="email">E-post</label>
+                <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    [(ngModel)]="email"
+                    #emailCtrl="ngModel"
+                    placeholder="E-post..."
+                    autocomplete="username"
+                    required
+                    email
+                />
+                @if (emailCtrl.invalid && (emailCtrl.dirty || emailCtrl.touched)) {
+                    <div class="error-message">
+                        @if (emailCtrl.errors?.['required']) {
+                            <span="emailCtrl.errors?.['required']">E-post krävs.</span>
+                        }
+                        @if (emailCtrl.errors?.['email']) {
+                            <span="emailCtrl.errors?.['email']">Ange en giltig e-postadress.</span>
+                        }
+                    </div>
+                }
+            </div>
+
+            <!-- Password Field -->
+            <div class="form-content">
+                <label for="password">Lösenord</label>
+                <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    [(ngModel)]="password"
+                    #passwordCtrl="ngModel"
+                    placeholder="Lösenord..."
+                    autocomplete="current-password"
+                    required
+                />
+                @if (passwordCtrl.invalid && (passwordCtrl.dirty || passwordCtrl.touched)) {
+                    <div class="error-message">
+                        @if (passwordCtrl.errors?.['required']) {
+                            <span>Lösenord krävs.</span>
+                        }
+                    </div>
+                }
+            </div>
+
+            <button type="submit" [disabled]="loginForm.invalid">
+                Logga in
+            </button>
+        </form>
+    </section>
+</main>

@@ -1,0 +1,75 @@
+// Login-sida, desktop-only
+
+:host {
+    display: block;
+    min-height: 100vh;
+    --mau-red: E4022D; 
+    --text-primary: #000000;
+    --border-color:E4022D;
+    --surface: rgba(255, 255, 255, 0.95);
+}
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10vh 24px 48px;
+
+    // Background of Malmö University
+    background: 
+        linear-gradient(
+            rgba(255, 255, 255, 0.7),
+            rgba(255, 255, 255, 0.7)
+        ),
+        url('/images/mau-background.svg') no-repeat center center;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background: #ffffff;
+    padding: 20px 20px;
+    border-radius: 10px;
+    
+}
+
+.mau-logo {
+    display: block;
+    width: 250px;
+    height: auto;
+    margin: 0 auto 48px;
+}
+
+.form-content {
+    margin-bottom: 24px;
+    text-align: left;
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: var(--text-primary);
+    }
+
+    input {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background: var(--surface);
+    }
+}
+
+button {
+    display: block;
+    width: 80%;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+        background: var(--mau-red);
+    }
+}
