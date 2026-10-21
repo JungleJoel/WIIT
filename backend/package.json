@@ -1,0 +1,41 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "WIIT",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "typecheck": "tsc --noEmit",
+    "migrate": "NODE_OPTIONS='--import tsx' knex migrate:latest --knexfile knexfile.ts",
+    "migrate:make": "NODE_OPTIONS='--import tsx' knex migrate:make --knexfile knexfile.ts",
+    "migrate:rollback": "NODE_OPTIONS='--import tsx' knex migrate:rollback --knexfile knexfile.ts",
+    "migrate:status": "NODE_OPTIONS='--import tsx' knex migrate:status --knexfile knexfile.ts",
+    "seed": "NODE_OPTIONS='--import tsx' knex seed:run --knexfile knexfile.ts",
+    "seed:make": "NODE_OPTIONS='--import tsx' knex seed:make --knexfile knexfile.ts"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^18.0.8",
+    "express": "^5.3.0",
+    "fast-xml-parser": "^5.11.2",
+    "knex": "^3.3.0",
+    "mssql": "^12.7.9",
+    "multer": "^2.4.0",
+    "tedious": "^20.3.7"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/mssql": "^12.3.0",
+    "@types/multer": "^2.3.0",
+    "@types/node": "^26.6.5",
+    "better-sqlite3": "^13.0.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ead xmlns="http://ead3.archivists.org/schema/" audience="external">
+  <control>
+    <recordid>SE-MAU-klass-2021</recordid>
+    <filedesc>
+      <titlestmt>
+        <titleproper>Klassificeringsstruktur 2021–</titleproper>
+      </titlestmt>
+    </filedesc>
+    <maintenancestatus value="derived"/>
+    <maintenanceagency>
+      <agencycode>SE-MAU</agencycode>
+      <agencyname>Malmö universitet, Arkivfunktionen</agencyname>
+    </maintenanceagency>
+    <languagedeclaration>
+      <language langcode="swe">svenska</language>
+      <script scriptcode="Latn">latinsk skrift</script>
+    </languagedeclaration>
+    <rightsdeclaration>
+      <abbr>CC0</abbr>
+      <citation>Metadata publicerad under CC0</citation>
+    </rightsdeclaration>
+    <maintenancehistory>
+      <maintenanceevent>
+        <eventtype value="derived"/>
+        <eventdatetime standarddatetime="2026-10-11T12:00:00.000Z">2026-10-11T12:00:00.000Z</eventdatetime>
+        <agenttype value="machine"/>
+        <agent>WIIT</agent>
+        <eventdescription>Export av publicerad (offentlig) del av strukturen</eventdescription>
+      </maintenanceevent>
+    </maintenancehistory>
+  </control>
+  <archdesc level="fonds">
+    <did>
+      <unitid>MAU</unitid>
+      <unittitle>Malmö universitet</unittitle>
+      <dao daotype="unknown" href="https://arkiv.internal.mau.se/" linktitle="Visa i MAU Arkiv"/>
+    </did>
+    <dsc>
+      <c level="series" id="mau-F">
+        <did>
+          <unitid>F</unitid>
+          <unittitle>Ekonomi</unittitle>
+        </did>
+        <c level="series" id="wiit-node-3">
+          <did>
+            <unitid>F2</unitid>
+            <unittitle>Fakturor &amp; kvitton &lt;2021&gt;</unittitle>
+            <unitdate label="Tidsomfång">2021–</unitdate>
+          </did>
+          <scopecontent localtype="beskrivning">
+            <head>Beskrivning</head>
+            <p>Leverantörsfakturor.</p>
+            <p>Med underlag.</p>
+          </scopecontent>
+          <appraisal localtype="gallring">
+            <head>Gallring</head>
+            <p>Gallras efter 10 år</p>
+          </appraisal>
+          <odd localtype="ansvarig">
+            <head>Ansvarig roll</head>
+            <p>Ekonomichef</p>
+          </odd>
+          <c level="file" id="wiit-node-4">
+            <did>
+              <unitid>F2:1</unitid>
+              <unittitle>Volym 1</unittitle>
+              <unitdatestructured>
+                <daterange>
+                  <fromdate standarddate="2021-01-01">2021-01-01</fromdate>
+                  <todate standarddate="2021-12-31">2021-12-31</todate>
+                </daterange>
+              </unitdatestructured>
+            </did>
+          </c>
+        </c>
+      </c>
+    </dsc>
+  </archdesc>
+</ead>
