@@ -15,6 +15,10 @@ const config: { [key: string]: Knex.Config } = {
         trustServerCertificate: true,
       },
     },
+    pool: {
+      min: 2,
+      max: 10,
+    },
     migrations: { directory: './migrations' },
     seeds: { directory: './seeds' },
   },

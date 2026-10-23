@@ -1,5 +1,5 @@
 import knexLib, { Knex } from 'knex';
-import knexConfig from '../../knexfile';
+import knexConfig from '../knexfile';
 
 const knex: Knex = knexLib(knexConfig.development);
 
