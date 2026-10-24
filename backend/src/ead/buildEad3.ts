@@ -13,6 +13,7 @@
  *  several roots                          <archdesc level="collection"> named after the structure
  *  child nodes                            nested <c level="…"> inside <dsc>
  *  node_types.ead_level / ead_otherlevel  @level / @otherlevel
+ *  node_types.ead_unit_description        <did><didnote localtype="structuralunitdescription">
  *  nodes.reference_code                   <did><unitid>
  *  nodes.previous_reference_code          <did><unitid localtype="tidigare_beteckning">
  *  nodes.title                            <did><unittitle>
@@ -106,7 +107,6 @@ export function buildEad3(
   return `<?xml version="1.0" encoding="UTF-8"?>\n${render(doc)}\n`;
 }
 
-// ─── control ────────────────────────────────────────────────────────────────
 
 function buildControl(structure: StructureRow, generatedAt: Date, generator: string, publicOnly: boolean): XmlElement {
   const agencyName = structure.agency_name || 'Malmö universitet';
@@ -144,7 +144,6 @@ function buildControl(structure: StructureRow, generatedAt: Date, generator: str
   ]);
 }
 
-// ─── components ─────────────────────────────────────────────────────────────
 
 function buildC(node: TreeNode): XmlElement {
   return el('c', { ...levelAttrs(node.type), id: nodeId(node) }, [
@@ -191,6 +190,8 @@ function buildDid(node: TreeNode): XmlElement {
     node.reference_code && el('unitid', {}, node.reference_code),
     node.previous_reference_code && el('unitid', { localtype: 'tidigare_beteckning', label: 'Tidigare beteckning' }, node.previous_reference_code),
     el('unittitle', {}, node.title),
+    node.type.ead_unit_description &&
+      el('didnote', { localtype: 'structuralunitdescription' }, node.type.ead_unit_description),
     !hasDateProp && dateRange(node.valid_from, node.valid_to),
     ...fromProps,
     ...physlocs,

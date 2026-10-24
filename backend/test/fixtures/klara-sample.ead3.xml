@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  HAND-WRITTEN test file in the shape of Klara's KS_IHP.ead3 (not real data).
+  It has the quirks found in the real export (claude/ead-exempelfiler-fran-johan.md):
+    - two trees under <dsc>: classificationstructure + recordkeepingentity
+    - structuralunit + <didnote localtype="structuralunitdescription">
+    - "HS" / "HT1" repeated under several parents
+    - <unitid localtype="modified"/"modifiedby"/"relations"> with <ref target="UN…">
+    - sekretess wrapped as <c><archdesc><accessrestrict> (not schema-valid)
+    - &lt;br/&gt; escaped inside <p>
+    - audience="external" on most nodes, missing on some
+    - a <ref> to a node that is not in the file
+-->
+<ead xmlns="http://ead3.archivists.org/schema/">
+  <control>
+    <recordid>SE-MAU-KS-1004-TEST</recordid>
+    <filedesc>
+      <titlestmt><titleproper>Informationshanteringsplan</titleproper></titlestmt>
+    </filedesc>
+    <maintenancestatus value="derived"/>
+    <maintenanceagency><agencyname>Malmö universitet</agencyname></maintenanceagency>
+    <languagedeclaration>
+      <language langcode="swe">svenska</language>
+      <script scriptcode="Latn">latinsk skrift</script>
+    </languagedeclaration>
+    <maintenancehistory>
+      <maintenanceevent>
+        <eventtype value="derived"/>
+        <eventdatetime>2026-10-15</eventdatetime>
+        <agenttype value="machine"/>
+        <agent>Klara</agent>
+      </maintenanceevent>
+    </maintenancehistory>
+  </control>
+  <archdesc level="collection">
+    <did><unittitle>Informationshanteringsplan</unittitle></did>
+    <dsc>
+      <c id="PS1004" level="otherlevel" otherlevel="classificationstructure" audience="external">
+        <did>
+          <unitid label="Version 2">1004</unitid>
+          <unittitle>Informationshanteringsplan</unittitle>
+          <unitdatestructured><daterange><fromdate standarddate="2021-01-01">2021-01-01</fromdate></daterange></unitdatestructured>
+        </did>
+        <scopecontent><p>Malmö universitets informationshanteringsplan.</p></scopecontent>
+
+        <c id="PR1" level="otherlevel" otherlevel="structuralunit" audience="external">
+          <did>
+            <unitid>1</unitid>
+            <unittitle>Leda verksamhet</unittitle>
+            <didnote localtype="structuralunitdescription">Verksamhetsområde</didnote>
+          </did>
+          <c id="PR11" level="otherlevel" otherlevel="structuralunit" audience="external">
+            <did>
+              <unitid>1.1</unitid>
+              <unittitle>Okategoriserade ärenden inom leda verksamhet</unittitle>
+              <didnote localtype="structuralunitdescription">Processgrupp</didnote>
+            </did>
+            <c id="PR111" level="otherlevel" otherlevel="structuralunit" audience="external">
+              <did>
+                <unitid>1.1.1</unitid>
+                <unittitle>Hantera okategoriserade ärenden</unittitle>
+                <didnote localtype="structuralunitdescription">Process</didnote>
+              </did>
+              <c id="HS111" level="otherlevel" otherlevel="recordgroup" audience="external">
+                <did><unitid>HS</unitid><unittitle>Handlingsslag</unittitle></did>
+                <c id="AT1" level="otherlevel" otherlevel="recordtype" audience="external">
+                  <did>
+                    <unitid>HT1</unitid>
+                    <unitid localtype="modified">2023-05-02T10:11:12</unitid>
+                    <unitid localtype="modifiedby">ai6999</unitid>
+                    <unitid localtype="relations"><ref linkrole="internal" target="UN-LADOK">Ladok</ref></unitid>
+                    <unittitle>Ansökan om antagning</unittitle>
+                  </did>
+                  <scopecontent><p>Gallras 2 år efter avslutat ärende.&lt;br/&gt;Beslut bevaras.</p></scopecontent>
+                  <appraisal><p>RA-FS 2021:6</p></appraisal>
+                  <archdesc level="otherlevel" otherlevel="sekretess"><accessrestrict><p>OSL 21 kap. 1 §</p></accessrestrict></archdesc>
+                  <relations><relation relationtype="otherrelationtype" otherrelationtype="link" href="https://www.mau.se/" linktitle="Mer info"><relationentry>Mer info</relationentry></relation></relations>
+                </c>
+                <c id="AT2" level="otherlevel" otherlevel="recordtype">
+                  <did>
+                    <unitid>HT2</unitid>
+                    <unitid localtype="relations"><ref linkrole="internal" target="UN-FINNS-INTE">Gammalt system</ref></unitid>
+                    <unittitle>Intern minnesanteckning</unittitle>
+                  </did>
+                </c>
+              </c>
+            </c>
+          </c>
+        </c>
+
+        <c id="PR2" level="otherlevel" otherlevel="structuralunit" audience="external">
+          <did>
+            <unitid>3</unitid>
+            <unittitle>Bedriva utbildning</unittitle>
+            <didnote localtype="structuralunitdescription">Verksamhetsområde</didnote>
+          </did>
+          <c id="PR32" level="otherlevel" otherlevel="structuralunit" audience="external">
+            <did>
+              <unitid>3.2</unitid>
+              <unittitle>Utbildning på grundnivå</unittitle>
+              <didnote localtype="structuralunitdescription">Processgrupp</didnote>
+            </did>
+            <c id="PR321" level="otherlevel" otherlevel="structuralunit" audience="external">
+              <did>
+                <unitid>3.2.1</unitid>
+                <unittitle>Planera utbildning</unittitle>
+                <didnote localtype="structuralunitdescription">Process</didnote>
+              </did>
+              <c id="HS321" level="otherlevel" otherlevel="recordgroup" audience="external">
+                <did><unitid>HS</unitid><unittitle>Handlingsslag</unittitle></did>
+                <c id="AT3" level="otherlevel" otherlevel="recordtype" audience="external">
+                  <did>
+                    <unitid>HT1</unitid>
+                    <unitid localtype="relations"><ref linkrole="internal" target="UN-LADOK">Ladok</ref><ref linkrole="internal" target="UN-CANVAS">Canvas</ref></unitid>
+                    <unittitle>Kursplan</unittitle>
+                  </did>
+                  <scopecontent><p>Bevaras</p></scopecontent>
+                </c>
+              </c>
+            </c>
+          </c>
+        </c>
+      </c>
+
+      <c id="FE" level="otherlevel" otherlevel="recordkeepingentity" audience="external">
+        <did><unittitle>Grouping of record keeping entities</unittitle></did>
+        <c id="UN-VS" level="otherlevel" otherlevel="Strukturenhet" audience="external">
+          <did><unittitle>Verksamhetssystem</unittitle></did>
+          <c id="UN-LADOK" level="otherlevel" otherlevel="Verksamhetssystem" audience="external">
+            <did><unittitle>Ladok</unittitle></did>
+          </c>
+          <c id="UN-CANVAS" level="otherlevel" otherlevel="Verksamhetssystem" audience="external">
+            <did><unittitle>Canvas</unittitle></did>
+          </c>
+        </c>
+        <c id="UN-AF24" level="otherlevel" otherlevel="Strukturenhet" audience="external">
+          <did><unittitle>Arkivförteckning 2024-</unittitle></did>
+          <c id="UN-3213" level="otherlevel" otherlevel="Strukturenhet" audience="external">
+            <did><unitid>3.2.1.3</unitid><unittitle>Kursplaner och scheman</unittitle></did>
+            <c id="UN-S1" level="otherlevel" otherlevel="Svit" audience="external">
+              <did>
+                <unitid>001</unitid>
+                <unittitle>Kursplaner</unittitle>
+                <physloc localtype="Placering">Arkivlokal Niagara</physloc>
+              </did>
+              <c id="UN-P1" level="otherlevel" otherlevel="Arkivpaket">
+                <did><unitid>1</unitid><unittitle>Paket 1</unittitle></did>
+              </c>
+            </c>
+          </c>
+        </c>
+      </c>
+    </dsc>
+  </archdesc>
+</ead>

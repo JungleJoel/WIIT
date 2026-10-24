@@ -14,8 +14,6 @@ import type { Knex } from 'knex';
  *   node     { id, reference_code, title, ..., type, properties: [], relations: [], children: [] }
  */
 
-// ─── Types ──────────────────────────────────────────────────────────────────
-
 /** MSSQL returns DATE as a JS Date; SQLite (tests) as a string. */
 export type DbDate = Date | string | null;
 /** MSSQL returns BIT as boolean; SQLite as 0/1. */
@@ -25,7 +23,7 @@ export type EadLevel =
   | 'collection' | 'fonds' | 'class' | 'recordgrp' | 'series' | 'subfonds'
   | 'subgrp' | 'subseries' | 'file' | 'item' | 'otherlevel';
 
-export type PropertyDataType = 'text' | 'longtext' | 'number' | 'date' | 'boolean' | 'url';
+export type PropertyDataType = 'text' | 'longtext' | 'number' | 'date' | 'boolean' | 'url' | 'enum'; // enum: migration 009, value in value_text
 
 export type CreatorType = 'corporate' | 'person' | 'family';
 
@@ -65,6 +63,7 @@ export interface NodeQueryRow {
   type_name: string;
   ead_level: EadLevel;
   ead_otherlevel: string | null;
+  ead_unit_description: string | null;
 }
 
 /** node_property_values joined with property_definitions. Only the column matching data_type is set. */
@@ -118,6 +117,8 @@ export interface NodeType {
   name: string;
   ead_level: EadLevel;
   ead_otherlevel: string | null;
+  /** Text of <didnote localtype="structuralunitdescription">, e.g. 'Process'. Set only for Klara's structuralunit types. */
+  ead_unit_description: string | null;
 }
 
 export interface NodeProperty {
@@ -190,8 +191,6 @@ export interface LoadOptions {
   publicOnly?: boolean;
 }
 
-// ─── Queries ────────────────────────────────────────────────────────────────
-
 export async function loadStructure(
   knex: Knex,
   structureId: number,
@@ -212,7 +211,7 @@ export async function loadStructure(
       'n.is_published', 'n.external_id', 'n.valid_from', 'n.valid_to',
       'n.description', 'n.portal_url',
       'nt.code as type_code', 'nt.name as type_name',
-      'nt.ead_level', 'nt.ead_otherlevel',
+      'nt.ead_level', 'nt.ead_otherlevel', 'nt.ead_unit_description',
     )
     .orderBy([{ column: 'n.parent_id' }, { column: 'n.sort_order' }, { column: 'n.id' }]);
 
@@ -291,7 +290,6 @@ async function loadArchive(knex: Knex, structureId: number, publicOnly: boolean)
   };
 }
 
-// ─── Pure helpers ───────────────────────────────────────────────────────────
 
 /** Pure: rows → nested tree. Exported for tests. */
 export function buildTree(
@@ -318,6 +316,7 @@ export function buildTree(
       type: {
         code: r.type_code, name: r.type_name,
         ead_level: r.ead_level, ead_otherlevel: r.ead_otherlevel,
+        ead_unit_description: r.ead_unit_description ?? null,
       },
       properties: [],
       relations: [],
