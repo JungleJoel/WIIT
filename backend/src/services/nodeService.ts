@@ -1,19 +1,48 @@
-<<<<<<< HEAD
 import type { Node } from "../models/node/node";
 import type { NodeValue, TreeNode } from "../models/node/treeNode";
 import type { NodePropertyValues } from "../models/node/nodePropertyValues";
 import type { NodeRepository } from "../repos/nodeRepository";
-import type { NodeTypeRepository } from "../repos/nodeTypeRepository";
-import type { PropertyDefinitionRepository } from "../repos/propertyDefinitionRepository";
-import type { StructureRepository } from "../repos/structureRepository";
+import { NodeRelationRepository } from "../repos/nodeRelationRepository";
+import { ChangeLogRepository } from "../repos/changeLogRepository";
+import { Tx, UnitOfWork } from "../db/unitOfWork";
 
 export class NodeService {
   constructor(
-    private readonly nodes: NodeRepository,
-    private readonly nodeTypes: NodeTypeRepository,
-    private readonly definitions: PropertyDefinitionRepository,
-    private readonly structures: StructureRepository,
+    private nodes: NodeRepository,
+    private relations: NodeRelationRepository,
+    private changeLog: ChangeLogRepository,
+    private uow: UnitOfWork,
   ) {}
+
+  async get(id: number): Promise<Node> {
+    const node = await this.nodes.findById(id);
+
+    if (!node) {
+      throw new Error(`Node with ID ${id} not found.`);
+    }
+
+    return node;
+  }
+
+  async create(input: Node, userId: number): Promise<Node> {
+    //LILAS IS IMPLEMENTING! ADD HER CODE HERE!
+    throw new Error("Not implemented yet")
+  }
+
+  async update(id: number, changes: Partial<Node>, userId: number, trx: Tx): Promise<Node> {
+    return this.nodes.updateById(id, changes, userId, trx);
+  }
+
+  async delete(id: number, userId: number, trx: Tx): Promise<boolean> {
+    return this.nodes.deletedById(id, userId, trx)
+  }
+
+  // DON'T THINK WE NEED TO IMPLEMENT THIS ONE!
+  async move() {}
+
+
+
+
 
   /**
    * The whole tree of one structure.

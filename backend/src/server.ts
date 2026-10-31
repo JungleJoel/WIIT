@@ -8,6 +8,7 @@ import { Index } from './routes';
 import { createEadExportRouter } from './ead/exportRoute';
 import { createEadImportRouter } from './ead/importRoute';
 import { createNodeRouter } from './routers/nodeRoutes';
+import { errorHandler } from './middleware/errorHandler';
 
 const app = express();
 const PORT = Number(process.env.PORT) || 3000;
@@ -21,22 +22,12 @@ app.use(session({
 }));
 app.use(attachUser);
 
-/**
-app.use('/', createIndexRouter());
+new Index(db).setRoutes(app);
 app.use('/api/users', createUserRouter(db));
 app.use('/api/node', createNodeRouter(db));
-
-new Index(db).setRoutes(app);
-
-app.use('/api/users', createUserRouter(db));
- */
-
 app.use('/api', createEadExportRouter({ knex: dbRaw, requireRole }));
 app.use('/api', createEadImportRouter({ knex: dbRaw, requireRole }));
 
-app.use((err: Error & { status?: number }, _req: Request, res: Response, _next: NextFunction) => {
-  console.error(err);
-  res.status(err.status ?? 500).json({ success: false, error: err.message });
-});
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
